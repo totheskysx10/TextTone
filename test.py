@@ -23,9 +23,9 @@ with open('tokenizer_sentiment.json', 'r', encoding='utf-8') as f:
 tokenizer = tokenizer_from_json(tokenizer_json)
 
 vocab_size = 20000
-max_len = 400
+max_len = 500
 sequences = tokenizer.texts_to_sequences(test_text)
-pads = pad_sequences(sequences, maxlen=max_len)
+pads = pad_sequences(sequences, maxlen=max_len, padding='post', truncating='post')
 
 
 model = load_model("model.keras", custom_objects={'F1Score': F1Score})
